@@ -1,0 +1,12 @@
+react/node_modules
+react/build
+react/public/build
+react/public/index.html
+react/public/logo192.png
+react/public/logo512.png
+react/public/manifest.json
+react/public/robots.txt
+react/public/favicon.ico
+
+ai-venv/*
+
