@@ -1,12 +1,12 @@
-react/node_modules
-react/build
-react/public/build
-react/public/index.html
-react/public/logo192.png
-react/public/logo512.png
-react/public/manifest.json
-react/public/robots.txt
-react/public/favicon.ico
-
-ai-venv/*
+frontend/node_modules
+frontend/build
+frontend/public/build
+frontend/public/index.html
+frontend/public/logo192.png
+frontend/public/logo512.png
+frontend/public/manifest.json
+frontend/public/robots.txt
+frontend/public/favicon.ico
+*.sqlite
+backend/ai-venv/*
 
