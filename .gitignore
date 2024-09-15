@@ -7,6 +7,9 @@ frontend/public/logo512.png
 frontend/public/manifest.json
 frontend/public/robots.txt
 frontend/public/favicon.ico
+**/node_modules
+**/dist
+**/.env
 *.sqlite
 backend/ai-venv/*
 logs
