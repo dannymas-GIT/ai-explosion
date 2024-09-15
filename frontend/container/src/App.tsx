@@ -6,8 +6,12 @@ const AIAdoptionChart = lazy(() => import('./components/AIAdoptionChart'));
 const AIImpactTable = lazy(() => import('./components/AIImpactTable'));
 const AIUseCasesPieChart = lazy(() => import('./components/AIUseCasesPieChart'));
 const AIJobsLineGraph = lazy(() => import('./components/AIJobsLineGraph'));
-const SearchComponent = lazy(() => import('./components/SearchComponent.tsx'));
+const SearchComponent = lazy(() => import('./components/SearchComponent'));
 const Footer = lazy(() => import('./components/Footer'));
+
+// New components
+const AIInvestmentBarChart = lazy(() => import('./components/AIInvestmentBarChart.tsx'));
+const AITrendsForecastChart = lazy(() => import('./components/AITrendsForecastChart.tsx'));
 
 const App: React.FC = () => (
   <div className="dashboard">
@@ -23,9 +27,9 @@ const App: React.FC = () => (
           </Suspense>
         </section>
         <section className="dashboard-cell">
-          <h2>AI Impact</h2>
-          <Suspense fallback={<div>Loading metrics...</div>}>
-            <AIImpactTable />
+          <h2>AI Investment Trends</h2>
+          <Suspense fallback={<div>Loading chart...</div>}>
+            <AIInvestmentBarChart />
           </Suspense>
         </section>
       </div>
@@ -34,6 +38,12 @@ const App: React.FC = () => (
           <h2>AI-Powered Search</h2>
           <Suspense fallback={<div>Loading search...</div>}>
             <SearchComponent />
+          </Suspense>
+        </section>
+        <section className="dashboard-cell">
+          <h2>AI Impact</h2>
+          <Suspense fallback={<div>Loading metrics...</div>}>
+            <AIImpactTable />
           </Suspense>
         </section>
       </div>
@@ -48,6 +58,12 @@ const App: React.FC = () => (
           <h2>AI-Related Job Trends</h2>
           <Suspense fallback={<div>Loading graph...</div>}>
             <AIJobsLineGraph />
+          </Suspense>
+        </section>
+        <section className="dashboard-cell">
+          <h2>AI Trends Forecast</h2>
+          <Suspense fallback={<div>Loading chart...</div>}>
+            <AITrendsForecastChart />
           </Suspense>
         </section>
       </div>
