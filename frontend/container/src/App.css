@@ -18,6 +18,54 @@
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
+.dashboard-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  background-color: #f0f0f0;
+}
+
+.logo-container {
+  margin-right: 1rem;
+}
+
+.logo-placeholder {
+  width: 50px;
+  height: 50px;
+  background-color: #007bff;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+  border-radius: 50%;
+}
+
+h1 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+nav ul {
+  list-style-type: none;
+  display: flex;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
+nav a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+}
+
+nav a:hover {
+  color: #007bff;
+}
+
 @keyframes logo-spin {
   from {
     transform: rotate(0deg);
@@ -39,4 +87,100 @@
 
 .read-the-docs {
   color: #888;
+}
+
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #1e1e1e;
+  color: #ffffff;
+}
+
+.dashboard-grid {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  flex-grow: 1;
+  max-width: 1800px;
+  margin: 0 auto;
+  width: 95%;
+}
+
+.dashboard-column {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.left-column, .right-column {
+  flex: 2;
+}
+
+.center-column {
+  flex: 6;
+}
+
+.dashboard-cell {
+  background-color: #2a2a2a;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  flex: 1;
+}
+
+.search-cell {
+  flex: 0 0 auto;
+  height: calc(100% - 40px); /* Adjust based on your gap */
+}
+
+h2 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 1.2rem;
+  color: #4a90e2;
+}
+
+/* Tablet Styles */
+@media (max-width: 1024px) {
+  .dashboard-grid {
+    flex-direction: column;
+  }
+  
+  .center-column {
+    order: -1; /* Move search to the top on tablet */
+  }
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .dashboard-grid {
+    width: 100%;
+    padding: 10px;
+  }
+  
+  .dashboard-cell {
+    padding: 15px;
+  }
+}
+
+/* Add any additional styles for your components here */
+
+.ai-impact-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.ai-impact-table th, .ai-impact-table td {
+  border: 1px solid #4a4a4a;
+  padding: 8px;
+  text-align: left;
+}
+
+.ai-impact-table th {
+  background-color: #3a3a3a;
+}
+
+.ai-impact-table tr:nth-child(even) {
+  background-color: #2f2f2f;
 }
