@@ -1,9 +1,15 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
+interface SearchResult {
+  title: string;
+  snippet: string;
+  url: string;
+}
+
 const SearchComponent: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
-  const [searchResults, setSearchResults] = useState([]);
+  const [searchResults, setSearchResults] = useState<SearchResult[]>([]);
   const [aiResponse, setAiResponse] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
@@ -22,8 +28,11 @@ const SearchComponent: React.FC = () => {
       });
       setAiResponse(responseChat.data.content || 'No response available.');
     } catch (error) {
-      console.error('Error during search or chat:', error.response ? error.response.data : error.message);
-      setAiResponse('Error: Unable to generate response.');
+      if (axios.isAxiosError(error)) {
+        console.error('Error during search or chat:', error.response ? error.response.data : error.message);
+      } else {
+        console.error('Unexpected error:', (error as Error).message);
+      }
     }
     setIsLoading(false);
   };
