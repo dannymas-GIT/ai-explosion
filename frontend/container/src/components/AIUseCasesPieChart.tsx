@@ -1,40 +1,38 @@
 import React from 'react';
-import { Pie } from 'react-chartjs-2';
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+import { PieChart, Pie, Cell, ResponsiveContainer, Legend, Tooltip } from 'recharts';
 
-ChartJS.register(ArcElement, Tooltip, Legend);
+const data = [
+  { name: 'Natural Language Processing', value: 30 },
+  { name: 'Computer Vision', value: 25 },
+  { name: 'Reinforcement Learning', value: 20 },
+  { name: 'Machine Learning', value: 15 },
+  { name: 'Other AI Applications', value: 10 },
+];
+
+const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#8884D8'];
 
 const AIUseCasesPieChart: React.FC = () => {
-  const data = {
-    labels: ['NLP', 'Computer Vision', 'Robotics', 'Predictive Analytics', 'Autonomous Vehicles'],
-    datasets: [
-      {
-        data: [30, 25, 15, 20, 10],
-        backgroundColor: [
-          'rgba(255, 99, 132, 0.8)',
-          'rgba(54, 162, 235, 0.8)',
-          'rgba(255, 206, 86, 0.8)',
-          'rgba(75, 192, 192, 0.8)',
-          'rgba(153, 102, 255, 0.8)',
-        ],
-      }
-    ]
-  };
-
-  const options = {
-    responsive: true,
-    plugins: {
-      legend: {
-        position: 'bottom' as const,
-      },
-      title: {
-        display: true,
-        text: 'AI Use Cases Distribution'
-      }
-    }
-  };
-
-  return <Pie data={data} options={options} />;
+  return (
+    <ResponsiveContainer width="100%" height={300}>
+      <PieChart>
+        <Pie
+          data={data}
+          cx="50%"
+          cy="50%"
+          labelLine={false}
+          outerRadius={80}
+          fill="#8884d8"
+          dataKey="value"
+        >
+          {data.map((entry, index) => (
+            <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+          ))}
+        </Pie>
+        <Tooltip formatter={(value, name) => [`${value}%`, name]} />
+        <Legend />
+      </PieChart>
+    </ResponsiveContainer>
+  );
 };
 
 export default AIUseCasesPieChart;

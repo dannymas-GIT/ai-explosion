@@ -1,77 +1,30 @@
-import React, { lazy, Suspense } from 'react';
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
-
-const Header = lazy(() => import('./components/Header'));
-const AIAdoptionChart = lazy(() => import('./components/AIAdoptionChart'));
-const AIImpactTable = lazy(() => import('./components/AIImpactTable'));
-const AIUseCasesPieChart = lazy(() => import('./components/AIUseCasesPieChart'));
-const AIJobsLineGraph = lazy(() => import('./components/AIJobsLineGraph'));
-const SearchComponent = lazy(() => import('./components/SearchComponent'));
-const Footer = lazy(() => import('./components/Footer'));
-
-// New components
-const AIInvestmentBarChart = lazy(() => import('./components/AIInvestmentBarChart.tsx'));
-const AITrendsForecastChart = lazy(() => import('./components/AITrendsForecastChart.tsx'));
+import Navigation from './components/Navigation';
+import Footer from './components/Footer';
+import MainDashboard from './components/MainDashboard.tsx';
+import SportsDashboard from './components/Sports/SportsDashboard.tsx';
+import FinanceDashboard from './components/Finance/FinanceDashboard.tsx';
+import WeatherTravelDashboard from './components/WeatherTravel/WeatherTravelDashboard.tsx';
+import NewsDashboard from './components/News/NewsDashboard.tsx';
 
 const App: React.FC = () => (
-  <div className="dashboard">
-    <Suspense fallback={<div>Loading...</div>}>
-      <Header />
-    </Suspense>
-    <main className="dashboard-grid">
-      <div className="dashboard-column left-column">
-        <section className="dashboard-cell">
-          <h2>AI Adoption Trends</h2>
-          <Suspense fallback={<div>Loading chart...</div>}>
-            <AIAdoptionChart />
-          </Suspense>
-        </section>
-        <section className="dashboard-cell">
-          <h2>AI Investment Trends</h2>
-          <Suspense fallback={<div>Loading chart...</div>}>
-            <AIInvestmentBarChart />
-          </Suspense>
-        </section>
-      </div>
-      <div className="dashboard-column center-column">
-        <section className="dashboard-cell search-cell">
-          <h2>AI-Powered Search</h2>
-          <Suspense fallback={<div>Loading search...</div>}>
-            <SearchComponent />
-          </Suspense>
-        </section>
-        <section className="dashboard-cell">
-          <h2>AI Impact</h2>
-          <Suspense fallback={<div>Loading metrics...</div>}>
-            <AIImpactTable />
-          </Suspense>
-        </section>
-      </div>
-      <div className="dashboard-column right-column">
-        <section className="dashboard-cell">
-          <h2>AI Use Cases</h2>
-          <Suspense fallback={<div>Loading chart...</div>}>
-            <AIUseCasesPieChart />
-          </Suspense>
-        </section>
-        <section className="dashboard-cell">
-          <h2>AI-Related Job Trends</h2>
-          <Suspense fallback={<div>Loading graph...</div>}>
-            <AIJobsLineGraph />
-          </Suspense>
-        </section>
-        <section className="dashboard-cell">
-          <h2>AI Trends Forecast</h2>
-          <Suspense fallback={<div>Loading chart...</div>}>
-            <AITrendsForecastChart />
-          </Suspense>
-        </section>
-      </div>
-    </main>
-    <Suspense fallback={<div>Loading...</div>}>
+  <Router>
+    <div className="app">
+      <Navigation />
+      <main>
+        <Routes>
+          <Route path="/" element={<MainDashboard />} />
+          <Route path="/sports/*" element={<SportsDashboard />} />
+          <Route path="/finance/*" element={<FinanceDashboard />} />
+          <Route path="/weather-travel/*" element={<WeatherTravelDashboard />} />
+          <Route path="/news/*" element={<NewsDashboard />} />
+        </Routes>
+      </main>
       <Footer />
-    </Suspense>
-  </div>
+    </div>
+  </Router>
 );
 
 export default App;
