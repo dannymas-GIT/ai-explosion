@@ -20,7 +20,6 @@ ChartJS.register(
   Tooltip,
   Legend
 );
-
 const AITrendsForecastChart: React.FC = () => {
   const data = {
     labels: ['2023', '2024', '2025', '2026', '2027'],
