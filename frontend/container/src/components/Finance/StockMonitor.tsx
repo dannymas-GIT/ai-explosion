@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 const StockMonitor: React.FC = () => {
   const [stockSymbol, setStockSymbol] = useState('');
-  const [stockData, setStockData] = useState(null);
+  const [stockData] = useState(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

@@ -1,7 +1,8 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-// import NFL from './NFL';
-// import Handball from './Handball.tsx';
+import SportsOverview from './SportsOverview';
+import NFL from './NFL';
+import Handball from './Handball';
 
 const SportsDashboard: React.FC = () => (
    

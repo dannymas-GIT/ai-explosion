@@ -3,11 +3,11 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
 import Navigation from './components/Navigation';
 import Footer from './components/Footer';
-import MainDashboard from './components/MainDashboard.tsx';
-import SportsDashboard from './components/Sports/SportsDashboard.tsx';
-import FinanceDashboard from './components/Finance/FinanceDashboard.tsx';
-import WeatherTravelDashboard from './components/WeatherTravel/WeatherTravelDashboard.tsx';
-import NewsDashboard from './components/News/NewsDashboard.tsx';
+import MainDashboard from './components/MainDashboard';
+import SportsDashboard from './components/Sports/SportsDashboard';
+import FinanceDashboard from './components/Finance/FinanceDashboard';
+import WeatherTravelDashboard from './components/WeatherTravel/WeatherTravelDashboard';
+import NewsDashboard from './components/News/NewsDashboard';
 
 const App: React.FC = () => (
   <Router>
