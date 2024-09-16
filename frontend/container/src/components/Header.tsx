@@ -1,15 +1,13 @@
-// import React from 'react';
+import React from 'react';
+import Navigation from './Navigation';
 
-const Header = () => (
-  <header style={{ background: '#333', color: 'white', padding: '1rem' }}>
-    <h1>AI Explosion Dashboard</h1>
-    <nav>
-      <a href="#adoption">Adoption</a> | 
-      <a href="#impact">Impact</a> | 
-      <a href="#use-cases">Use Cases</a> | 
-      <a href="#jobs">Jobs</a>
-    </nav>
-  </header>
-);
+const Header: React.FC = () => {
+  return (
+    <header className="header">
+      <h1>AI-Explosion LifeBoard</h1>
+      <Navigation />
+    </header>
+  );
+};
 
 export default Header;
