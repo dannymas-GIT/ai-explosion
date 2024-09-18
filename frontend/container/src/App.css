@@ -209,3 +209,28 @@ body, html {
     width: 100%;
   }
 }
+
+/* New container styles */
+.app-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #121212;
+}
+
+.content-container {
+  width: 90%;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.main-content {
+  margin-top: 1rem;
+}
+
+@media (max-width: 768px) {
+  .content-container {
+    width: 95%;
+  }
+}
