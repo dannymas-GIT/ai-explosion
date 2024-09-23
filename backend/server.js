@@ -1,10 +1,10 @@
-const express = require('express');
-const axios = require('axios');
-const cors = require('cors');
-const path = require('path');
-const fs = require('fs');
-require('dotenv').config();
-const { AccessToken } = require('livekit-server-sdk');
+import express from 'express';
+import axios from 'axios';
+import cors from 'cors';
+import dotenv from 'dotenv';
+import { AccessToken } from 'livekit-server-sdk';
+
+dotenv.config();
 
 const app = express();
 
@@ -15,7 +15,7 @@ app.use(cors({
 app.use(express.json());
 
 // Environment variables
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5001;  // Changed to 5001
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
 const TAVILY_API_KEY = process.env.TAVILY_API_KEY;
 const LIVEKIT_API_KEY = process.env.LIVEKIT_API_KEY;

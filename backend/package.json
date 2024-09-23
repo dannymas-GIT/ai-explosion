@@ -2,7 +2,7 @@
   "name": "ai-dashboard-backend",
   "version": "1.0.0",
   "description": "Backend server for AI Dashboard application",
-  "main": "server.mjs",
+  "main": "server.js",
   "type": "module",
   "scripts": {
     "start": "node server.mjs",
