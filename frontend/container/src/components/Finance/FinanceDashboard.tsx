@@ -6,46 +6,36 @@ import AIInvestmentBarChart from '../AIInvestmentBarChart';
 import AIJobsLineGraph from '../AIJobsLineGraph';
 import AIUseCasesPieChart from '../AIUseCasesPieChart';
 import AITrendsForecastChart from '../AITrendsForecastChart';
-import LiveKitComponent from '../LiveKit/LiveKitComponent';
+import LiveKitVoiceAssistant from '../LiveKit/LiveKitVoiceAssistant';
 
 const FinanceDashboard: React.FC = () => {
   return (
     <div className="dashboard-grid">
       <div className="dashboard-column left-column">
         <section className="dashboard-cell">
-          <h2>Finance Adoption Trends</h2>
+          <h2>Finance AI Adoption Trends</h2>
           <AIAdoptionChart />
         </section>
         <section className="dashboard-cell">
-          <h2>Finance Investment Overview</h2>
-          <AIInvestmentBarChart />
-        </section>
-        <section className="dashboard-cell">
-          <h2>Finance Use Cases Distribution</h2>
+          <h2>Finance AI Use Cases</h2>
           <AIUseCasesPieChart />
         </section>
       </div>
       <div className="dashboard-column center-column">
-        <section className="dashboard-cell search-cell">
-          <h2>Finance-Powered Search</h2>
-          <SearchComponent />
+        <section className="dashboard-cell voice-assistant-cell">
+          <LiveKitVoiceAssistant />
         </section>
-        <section className="dashboard-cell">
-          <h2>LiveKit Integration</h2>
-          <LiveKitComponent />
+        <section className="dashboard-cell search-cell">
+          <SearchComponent />
         </section>
       </div>
       <div className="dashboard-column right-column">
         <section className="dashboard-cell">
-          <h2>Finance Job Market Trends</h2>
-          <AIJobsLineGraph />
-        </section>
-        <section className="dashboard-cell">
-          <h2>Finance Impact on Industries</h2>
+          <h2>AI Impact on Finance Industry</h2>
           <AIImpactTable />
         </section>
         <section className="dashboard-cell">
-          <h2>Finance Trends Forecast</h2>
+          <h2>Finance AI Trends Forecast</h2>
           <AITrendsForecastChart />
         </section>
       </div>

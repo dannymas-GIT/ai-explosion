@@ -1,10 +1,10 @@
-const express = require('express');
-const axios = require('axios');
-const cors = require('cors');
-const path = require('path');
-const fs = require('fs');
-require('dotenv').config();
-const { AccessToken } = require('livekit-server-sdk');
+import express from 'express';
+import axios from 'axios';
+import cors from 'cors';
+import dotenv from 'dotenv';
+import { AccessToken } from 'livekit-server-sdk';
+
+dotenv.config();
 
 const app = express();
 
@@ -26,7 +26,6 @@ app.post('/api/chat', async (req, res) => {
   try {
     const { message } = req.body;
     console.log('Received chat message:', message);
-    console.log('OpenAI API Key:', OPENAI_API_KEY.substring(0, 5) + '...'); // Log first 5 characters of API key
 
     const response = await axios.post(
       'https://api.openai.com/v1/chat/completions',
@@ -42,8 +41,6 @@ app.post('/api/chat', async (req, res) => {
       }
     );
 
-    console.log('OpenAI API response:', JSON.stringify(response.data, null, 2));
-
     if (response.data && response.data.choices && response.data.choices[0]) {
       res.json(response.data.choices[0].message);
     } else {
@@ -51,26 +48,44 @@ app.post('/api/chat', async (req, res) => {
     }
   } catch (error) {
     console.error('Error in chat API:', error.response ? error.response.data : error.message);
-    console.error('Full error object:', JSON.stringify(error, null, 2));
     res.status(500).json({ error: 'An error occurred while processing your request.', details: error.message });
   }
 });
 
-app.post('/api/livekit/token', (req, res) => {
+app.post('/api/livekit/token', async (req, res) => {
+  console.log('Received request for LiveKit token');
   const { room } = req.body;
   if (!room) {
+    console.log('Room name is missing');
     return res.status(400).json({ error: 'Room name is required' });
   }
 
-  const at = new AccessToken(LIVEKIT_API_KEY, LIVEKIT_API_SECRET, {
-    identity: Date.now().toString(),
-  });
-  at.addGrant({ roomJoin: true, room });
+  try {
+    if (!LIVEKIT_API_KEY || !LIVEKIT_API_SECRET) {
+      console.log('LiveKit API key or secret is missing');
+      throw new Error('LiveKit API key or secret is missing');
+    }
 
-  const token = at.toJwt();
-  res.json({ token });
+    console.log('Generating token for room:', room);
+    console.log('Using API Key:', LIVEKIT_API_KEY);
+    console.log('Using API Secret:', LIVEKIT_API_SECRET.substring(0, 5) + '...');
+
+    const at = new AccessToken(LIVEKIT_API_KEY, LIVEKIT_API_SECRET, {
+      identity: `user-${Date.now()}`,
+    });
+    at.addGrant({ roomJoin: true, room, roomCreate: true });
+
+    const token = await at.toJwt();
+    console.log('Generated token:', token);
+    res.json({ token });
+  } catch (error) {
+    console.error('Error generating LiveKit token:', error);
+    res.status(500).json({ error: 'Failed to generate token', details: error.message });
+  }
 });
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
+  console.log('LiveKit API Key:', LIVEKIT_API_KEY ? 'Set' : 'Not set');
+  console.log('LiveKit API Secret:', LIVEKIT_API_SECRET ? 'Set' : 'Not set');
 });
