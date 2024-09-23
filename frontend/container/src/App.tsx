@@ -1,19 +1,19 @@
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Layout from './components/Layout';
 import Header from './components/Header';
-import Footer from './components/Footer';
 import MainDashboard from './components/MainDashboard';
 import SportsDashboard from './components/Sports/SportsDashboard';
 import FinanceDashboard from './components/Finance/FinanceDashboard';
 import WeatherTravelDashboard from './components/WeatherTravel/WeatherTravelDashboard';
 import NewsDashboard from './components/News/NewsDashboard';
 
-const App: React.FC = () => (
-  <Router>
-    <div className="app-wrapper">
-      <div className="content-container">
+function App() {
+  return (
+    <Router>
+      <div className="app-wrapper">
         <Header />
-        <main className="main-content">
+        <Layout>
           <Routes>
             <Route path="/" element={<MainDashboard />} />
             <Route path="/sports" element={<SportsDashboard />} />
@@ -21,11 +21,10 @@ const App: React.FC = () => (
             <Route path="/weather-travel" element={<WeatherTravelDashboard />} />
             <Route path="/news" element={<NewsDashboard />} />
           </Routes>
-        </main>
+        </Layout>
       </div>
-      <Footer />
-    </div>
-  </Router>
-);
+    </Router>
+  );
+}
 
 export default App;

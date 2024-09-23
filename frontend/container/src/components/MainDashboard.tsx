@@ -6,6 +6,7 @@ import AIInvestmentBarChart from './AIInvestmentBarChart';
 import AIJobsLineGraph from './AIJobsLineGraph';
 import AIUseCasesPieChart from './AIUseCasesPieChart';
 import AITrendsForecastChart from './AITrendsForecastChart';
+import LiveKitComponent from './LiveKit/LiveKitComponent';
 
 const MainDashboard: React.FC = () => {
   return (
@@ -28,6 +29,10 @@ const MainDashboard: React.FC = () => {
         <section className="dashboard-cell search-cell">
           <h2>AI-Powered Search</h2>
           <SearchComponent />
+        </section>
+        <section className="dashboard-cell">
+          <h2>LiveKit Integration</h2>
+          <LiveKitComponent />
         </section>
       </div>
       <div className="dashboard-column right-column">

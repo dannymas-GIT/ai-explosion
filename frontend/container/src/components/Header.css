@@ -1,12 +1,9 @@
 .main-header {
   background-color: #1a1a1a;
   padding: 1rem;
-  margin-top: 20px; /* Add top margin to the header */
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  width: 100%;
-  box-sizing: border-box;
 }
 
 .header-content {
@@ -26,23 +23,42 @@
   color: #ffffff;
   font-size: 2rem;
   margin: 0;
-  flex-grow: 1;
-  text-align: center;
+}
+
+.navigation ul {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.navigation li {
+  margin-right: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.navigation a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.navigation a:hover {
+  text-decoration: underline;
 }
 
 @media (min-width: 768px) {
-  .header-content {
+  .main-header {
     flex-direction: row;
-    justify-content: flex-start;
+    justify-content: space-between;
+    align-items: center;
   }
 
-  .header-logo {
+  .header-content {
     margin-bottom: 0;
-    margin-right: 1rem;
   }
 
-  .main-header h1 {
-    font-size: 2.5rem;
-    flex-grow: 1;
+  .navigation ul {
+    flex-wrap: nowrap;
   }
 }

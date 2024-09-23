@@ -1,12 +1,19 @@
-import React from 'react';
-import Navigation from './Navigation';
-import MainDashboard from './MainDashboard';
+import React, { ReactNode } from 'react';
+import Footer from './Footer';
 
-const Layout: React.FC = () => {
+interface LayoutProps {
+  children: ReactNode;
+}
+
+const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
-    <div className="app-container">
-      <Navigation />
-      <MainDashboard />
+    <div className="layout">
+      <main className="main-content">
+        <div className="content-container">
+          {children}
+        </div>
+      </main>
+      <Footer />
     </div>
   );
 };
