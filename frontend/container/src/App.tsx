@@ -7,6 +7,8 @@ import SportsDashboard from './components/Sports/SportsDashboard';
 import FinanceDashboard from './components/Finance/FinanceDashboard';
 import WeatherTravelDashboard from './components/WeatherTravel/WeatherTravelDashboard';
 import NewsDashboard from './components/News/NewsDashboard';
+import Register from './components/Auth/Register';
+import Login from './components/Auth/Login';
 
 function App() {
   return (
@@ -20,6 +22,8 @@ function App() {
             <Route path="/finance" element={<FinanceDashboard />} />
             <Route path="/weather-travel" element={<WeatherTravelDashboard />} />
             <Route path="/news" element={<NewsDashboard />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/login" element={<Login />} />
           </Routes>
         </Layout>
       </div>

@@ -1,22 +1,22 @@
 import React, { useState, useCallback } from 'react';
-import { LiveKitRoom, VideoConference, RoomOptions } from '@livekit/components-react';
+import { LiveKitRoom, VideoConference } from '@livekit/components-react';
+import '@livekit/components-styles';
 
-const LiveKitComponent: React.FC = () => {
-  const [token, setToken] = useState('');
-  const [roomName, setRoomName] = useState('');
-  const [isConnected, setIsConnected] = useState(false);
+const LiveKitVoiceAssistant: React.FC = () => {
+  const [token, setToken] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [roomName, setRoomName] = useState('');
 
-  const handleConnect = useCallback(async () => {
+  const fetchToken = useCallback(async () => {
     try {
-      const apiUrl = import.meta.env.VITE_LIVEKIT_API_URL || 'http://localhost:5001';
+      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5001';
       console.log('Attempting to connect to:', `${apiUrl}/livekit/token`);
       const response = await fetch(`${apiUrl}/livekit/token`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ room: roomName }),
+        body: JSON.stringify({ room: roomName, username: 'user-' + Date.now() }),
       });
 
       if (!response.ok) {
@@ -30,15 +30,18 @@ const LiveKitComponent: React.FC = () => {
         throw new Error('No token received from server');
       }
       setToken(data.token);
-      setIsConnected(true);
       setError(null);
     } catch (error) {
-      console.error('Error connecting to LiveKit:', error);
-      setError(`Failed to connect. Error: ${error instanceof Error ? error.message : String(error)}`);
+      console.error('Error fetching token:', error);
+      setError(`Failed to fetch token. Error: ${error instanceof Error ? error.message : String(error)}`);
     }
   }, [roomName]);
 
-  if (!isConnected) {
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
+
+  if (!token) {
     return (
       <div className="livekit-connect">
         <input
@@ -47,35 +50,23 @@ const LiveKitComponent: React.FC = () => {
           onChange={(e) => setRoomName(e.target.value)}
           placeholder="Enter room name"
         />
-        <button onClick={handleConnect}>Connect to LiveKit</button>
-        {error && <p className="error-message">{error}</p>}
+        <button onClick={fetchToken}>Connect to Voice Assistant</button>
       </div>
     );
   }
 
-  const roomOptions: RoomOptions = {
-    adaptiveStream: true,
-    dynacast: true,
-    publishDefaults: {
-      simulcast: true,
-    },
-  };
-
   return (
     <LiveKitRoom
+      video={false}
+      audio={true}
       token={token}
       serverUrl={import.meta.env.VITE_LIVEKIT_SERVER_URL}
-      options={roomOptions}
-      connect={true}
-      onError={(error) => {
-        console.error('LiveKitRoom error:', error);
-        setError(`LiveKit error: ${error.message}`);
-        setIsConnected(false);
-      }}
+      onConnected={() => console.log("Connected to LiveKit")}
+      onError={(error) => console.error("LiveKit connection error:", error)}
     >
       <VideoConference />
     </LiveKitRoom>
   );
 };
 
-export default LiveKitComponent;
+export default LiveKitVoiceAssistant;

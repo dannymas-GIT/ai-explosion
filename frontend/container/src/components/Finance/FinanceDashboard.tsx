@@ -2,11 +2,9 @@ import React from 'react';
 import SearchComponent from '../Search/SearchComponent';
 import AIAdoptionChart from '../AIAdoptionChart';
 import AIImpactTable from '../AIImpactTable';
-import AIInvestmentBarChart from '../AIInvestmentBarChart';
-import AIJobsLineGraph from '../AIJobsLineGraph';
-import AIUseCasesPieChart from '../AIUseCasesPieChart';
 import AITrendsForecastChart from '../AITrendsForecastChart';
 import LiveKitVoiceAssistant from '../LiveKit/LiveKitVoiceAssistant';
+import StockMonitor from './StockMonitor';
 
 const FinanceDashboard: React.FC = () => {
   return (
@@ -17,8 +15,7 @@ const FinanceDashboard: React.FC = () => {
           <AIAdoptionChart />
         </section>
         <section className="dashboard-cell">
-          <h2>Finance AI Use Cases</h2>
-          <AIUseCasesPieChart />
+          <StockMonitor />
         </section>
       </div>
       <div className="dashboard-column center-column">

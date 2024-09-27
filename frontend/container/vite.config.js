@@ -19,7 +19,17 @@
 
          '/api': {
 
-           target: 'http://localhost:5000', // Assuming your backend is on port 5000
+           target: 'http://localhost:5000', // Flask backend
+
+           changeOrigin: true,
+
+           secure: false,
+
+         },
+
+         '/livekit': {
+
+           target: 'http://localhost:5001', // LiveKit backend
 
            changeOrigin: true,
 
