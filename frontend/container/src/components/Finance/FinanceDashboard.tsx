@@ -17,7 +17,7 @@ const FinanceDashboard: React.FC = () => {
         <section className="dashboard-cell">
           <h2>Finance Tools</h2>
           <ul>
-            <li><Link to="/finance/stock-monitor">Stock Monitor</Link></li>
+            <li><Link to="/finance/stocks">Stock Monitor</Link></li>
             <li><Link to="/finance/account">Account Management</Link></li>
           </ul>
         </section>

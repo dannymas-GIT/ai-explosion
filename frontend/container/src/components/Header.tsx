@@ -1,18 +1,26 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Navigation from './Navigation';
-import StainedGlassLogo from '../assets/StainedGlassLogo.png';
 
 const Header: React.FC = () => {
   return (
-    <header className="main-header">
-      <div className="header-content">
-        <div className="header-left">
-          <img src={StainedGlassLogo} alt="AI-Explosion LifeBoard Logo" className="header-logo" />
-          <Link to="/" className="header-title">AI-Explosion LifeBoard</Link>
-        </div>
-        <Navigation />
-      </div>
+    <header>
+      <nav>
+        <ul>
+          <li><Link to="/">Dashboard</Link></li>
+          <li><Link to="/sports">Sports</Link></li>
+          <li>
+            <span>Finance</span>
+            <ul>
+              <li><Link to="/finance">Overview</Link></li>
+              <li><Link to="/finance/stocks">Stock Monitor</Link></li>
+              <li><Link to="/finance/account">Account Management</Link></li>
+            </ul>
+          </li>
+          <li><Link to="/weather-travel">Weather & Travel</Link></li>
+          <li><Link to="/news">News</Link></li>
+          <li><Link to="/login">Login</Link></li>
+        </ul>
+      </nav>
     </header>
   );
 };
