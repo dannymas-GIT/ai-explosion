@@ -1,5 +1,6 @@
 import React, { useState, useCallback } from 'react';
-import { LiveKitRoom, VideoConference, RoomOptions } from '@livekit/components-react';
+import { LiveKitRoom, VideoConference } from '@livekit/components-react';
+import type { RoomOptions } from 'livekit-client';
 
 const LiveKitComponent: React.FC = () => {
   const [token, setToken] = useState('');
