@@ -192,7 +192,7 @@ app.delete('/api/stocks/:symbol', authenticateToken, async (req, res) => {
 });
 
 // Function to fetch stock data from Alpha Vantage API
-async function fetchStockData(symbol) {
+async function fetchStockData(symbol: string) {
   try {
     const response = await axios.get(`https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${symbol}&apikey=${ALPHA_VANTAGE_API_KEY}`);
     const data = response.data['Global Quote'];

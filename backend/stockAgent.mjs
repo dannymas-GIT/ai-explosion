@@ -5,8 +5,8 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 const prisma = new PrismaClient();
-const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
-const NEWS_API_KEY = process.env.NEWS_API_KEY;
+const OPENAI_API_KEY = process.env.OPENAI_API_KEY as string;
+const NEWS_API_KEY = process.env.NEWS_API_KEY as string;
 
 async function analyzeStockData() {
   const stocks = await prisma.stock.findMany();
@@ -21,12 +21,12 @@ async function analyzeStockData() {
   }
 }
 
-async function fetchNewsArticles(symbol) {
+async function fetchNewsArticles(symbol: string) {
   const response = await axios.get(`https://newsapi.org/v2/everything?q=${symbol}&apiKey=${NEWS_API_KEY}`);
   return response.data.articles.slice(0, 5); // Get the first 5 articles
 }
 
-async function analyzeNewsArticles(symbol, articles) {
+async function analyzeNewsArticles(symbol: string, articles: any[]) {
   const prompt = `Analyze the following news articles about ${symbol} and provide a summary of the key points and sentiment:
 
 ${articles.map(article => `Title: ${article.title}\nDescription: ${article.description}\n`).join('\n')}
@@ -53,7 +53,7 @@ Summary:`;
   return response.data.choices[0].text.trim();
 }
 
-function generateRecommendation(analysis) {
+function generateRecommendation(analysis: string) {
   // Implement your recommendation logic here based on the analysis
   // This is a simplified example
   if (analysis.toLowerCase().includes('positive')) {
