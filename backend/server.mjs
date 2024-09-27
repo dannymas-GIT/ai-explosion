@@ -19,7 +19,7 @@ app.use(cors({
 app.use(express.json());
 
 // Environment variables
-const PORT = process.env.PORT || 5001; // Ensure this is the only declaration of PORT
+const NEW_PORT = process.env.NEW_PORT || 5001; // New port for stock and auth features
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
 const TAVILY_API_KEY = process.env.TAVILY_API_KEY;
 const LIVEKIT_API_KEY = process.env.LIVEKIT_API_KEY;
@@ -206,6 +206,6 @@ async function fetchStockData(symbol) {
   }
 }
 
-app.listen(PORT, () => {
-  console.log(`LiveKit server is running on port ${PORT}`);
+app.listen(NEW_PORT, () => {
+  console.log(`New features server is running on port ${NEW_PORT}`);
 });

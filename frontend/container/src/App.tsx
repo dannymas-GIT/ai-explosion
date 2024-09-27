@@ -9,6 +9,8 @@ import WeatherTravelDashboard from './components/WeatherTravel/WeatherTravelDash
 import NewsDashboard from './components/News/NewsDashboard';
 import Register from './components/Auth/Register';
 import Login from './components/Auth/Login';
+import StockMonitor from './components/Finance/StockMonitor';
+import AccountManagement from './components/Finance/AccountManagement';
 
 function App() {
   return (
@@ -20,6 +22,8 @@ function App() {
             <Route path="/" element={<MainDashboard />} />
             <Route path="/sports" element={<SportsDashboard />} />
             <Route path="/finance" element={<FinanceDashboard />} />
+            <Route path="/finance/stock-monitor" element={<StockMonitor />} />
+            <Route path="/finance/account" element={<AccountManagement />} />
             <Route path="/weather-travel" element={<WeatherTravelDashboard />} />
             <Route path="/news" element={<NewsDashboard />} />
             <Route path="/register" element={<Register />} />

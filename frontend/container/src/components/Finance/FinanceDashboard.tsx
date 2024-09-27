@@ -1,10 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import SearchComponent from '../Search/SearchComponent';
 import AIAdoptionChart from '../AIAdoptionChart';
 import AIImpactTable from '../AIImpactTable';
 import AITrendsForecastChart from '../AITrendsForecastChart';
 import LiveKitVoiceAssistant from '../LiveKit/LiveKitVoiceAssistant';
-import StockMonitor from './StockMonitor';
 
 const FinanceDashboard: React.FC = () => {
   return (
@@ -15,7 +15,11 @@ const FinanceDashboard: React.FC = () => {
           <AIAdoptionChart />
         </section>
         <section className="dashboard-cell">
-          <StockMonitor />
+          <h2>Finance Tools</h2>
+          <ul>
+            <li><Link to="/finance/stock-monitor">Stock Monitor</Link></li>
+            <li><Link to="/finance/account">Account Management</Link></li>
+          </ul>
         </section>
       </div>
       <div className="dashboard-column center-column">
