@@ -11,23 +11,11 @@
 
      server: {
 
-       host: '0.0.0.0',
-
        port: 3000,
 
        proxy: {
 
          '/api': {
-
-           target: 'http://localhost:5000', // Flask backend
-
-           changeOrigin: true,
-
-           secure: false,
-
-         },
-
-         '/livekit': {
 
            target: 'http://localhost:5001', // LiveKit backend
 

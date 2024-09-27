@@ -1,0 +1,41 @@
+.livekit-voice-assistant {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  position: relative;
+  padding: 15px;
+  box-sizing: border-box;
+}
+
+.livekit-input {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #3a9fff;
+  border-radius: 4px;
+  background-color: #2d2d2d;
+  color: #ffffff;
+  margin-bottom: 45px; /* Decreased from 50px to 45px */
+  box-sizing: border-box;
+}
+
+.livekit-button {
+  position: absolute;
+  bottom: 5px;
+  right: 15px;
+  padding: 12px 20px;
+  font-size: 16px;
+  background-color: #3a9fff;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 240px;
+  white-space: nowrap;
+  text-align: center;
+}
+
+.livekit-button:hover {
+  background-color: #2980b9;
+}

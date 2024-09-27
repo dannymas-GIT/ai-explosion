@@ -10,10 +10,10 @@ const AppRoutes: React.FC = () => {
   return (
     <Routes>
       <Route path="/" element={<MainDashboard />} />
-      <Route path="/sports/*" element={<SportsDashboard />} />
-      <Route path="/finance/*" element={<FinanceDashboard />} />
-      <Route path="/weather-travel/*" element={<WeatherTravelDashboard />} />
-      <Route path="/news/*" element={<NewsDashboard />} />
+      <Route path="/sports" element={<SportsDashboard />} />
+      <Route path="/finance" element={<FinanceDashboard />} />
+      <Route path="/weather-travel" element={<WeatherTravelDashboard />} />
+      <Route path="/news" element={<NewsDashboard />} />
     </Routes>
   );
 };

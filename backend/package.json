@@ -21,12 +21,16 @@
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
     "express": "^4.21.0",
-    "livekit-client": "^2.5.2",
-    "livekit-server-sdk": "^2.6.2"
+    "livekit-client": "^1.11.2",
+    "livekit-server-sdk": "^1.2.6",
+    "bcrypt": "^5.1.0",
+    "jsonwebtoken": "^9.0.0",
+    "@prisma/client": "^4.12.0"
   },
   "devDependencies": {
     "@types/node": "^14.14.31",
     "nodemon": "^3.0.1",
-    "typescript": "^4.2.3"
+    "typescript": "^4.2.3",
+    "prisma": "^4.12.0"
   }
 }

@@ -1,0 +1,93 @@
+cat << EOF > frontend/container/snapshots/header_layout_snapshot.txt
+# Header Layout Snapshot
+
+## Date: [Current Date]
+
+### Header.tsx
+\`\`\`tsx
+import React from 'react';
+import { Link } from 'react-router-dom';
+import './Header.css';
+import StainedGlassLogo from '../assets/StainedGlassLogo.png';
+import Navigation from './Navigation';
+
+const Header: React.FC = () => {
+  return (
+    <header className="app-header">
+      <div className="header-content">
+        <div className="logo-title-container">
+          <img src={StainedGlassLogo} alt="AI-Explosion LifeBoard Logo" className="logo" />
+          <h1 className="app-title">AI-Explosion LifeBoard</h1>
+        </div>
+        <Navigation />
+      </div>
+    </header>
+  );
+};
+
+export default Header;
+\`\`\`
+
+### Header.css
+\`\`\`css
+.app-header {
+  background-color: #1e1e1e;
+  padding: 10px 0;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  width: 100%;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 30px;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+/* ... (rest of the CSS content) ... */
+\`\`\`
+
+### Navigation.tsx
+\`\`\`tsx
+import React from 'react';
+import { Link } from 'react-router-dom';
+
+const Navigation: React.FC = () => {
+  return (
+    <nav className="navigation">
+      <ul className="nav-menu">
+        <li>
+          <Link to="/" className="nav-link">Main Dashboard</Link>
+        </li>
+        <li className="dropdown">
+          <Link to="/sports" className="nav-link">Sports</Link>
+          <ul className="dropdown-menu">
+            <li><Link to="/sports">Sports Dashboard</Link></li>
+            <li><Link to="/sports/football">Football</Link></li>
+            <li><Link to="/sports/basketball">Basketball</Link></li>
+            <li><Link to="/sports/tennis">Tennis</Link></li>
+          </ul>
+        </li>
+        <!-- ... (rest of the navigation items) ... -->
+      </ul>
+    </nav>
+  );
+};
+
+export default Navigation;
+\`\`\`
+
+### Description
+This snapshot represents the current state of the header layout. The header includes a logo, title, and navigation menu with dropdown functionality. The layout is responsive and adjusts for mobile devices. Key features include:
+
+1. Full-width header with left-aligned logo and title, and right-aligned navigation.
+2. Dropdown menus for Sports, Finance, Weather & Travel, and News sections.
+3. Responsive design that stacks elements vertically on smaller screens.
+4. Increased text size (by 10%) and added padding for better readability and spacing.
+5. Hover effects on navigation links and dropdown items.
+6. Custom styling for the logo, title, and navigation elements.
+
+The Header component uses the Navigation component to render the menu items, providing a clean separation of concerns. The CSS is organized to handle both desktop and mobile layouts, ensuring a consistent user experience across devices.
+EOF

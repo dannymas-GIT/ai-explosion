@@ -1,64 +1,158 @@
-.main-header {
-  background-color: #1a1a1a;
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+.app-header {
+  background-color: #1e1e1e;
+  padding: 10px 0;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  width: 100%;
 }
 
 .header-content {
   display: flex;
+  justify-content: space-between; /* This will push logo/title to left and nav to right */
   align-items: center;
-  width: 100%;
-  margin-bottom: 1rem;
+  padding: 0 30px; /* Increased from 25px to 30px (5px more on each side) */
+  max-width: 100%; /* Remove any max-width constraint */
+  margin: 0 auto;
 }
 
-.header-logo {
+.logo-title-container {
+  display: flex;
+  align-items: center;
+  /* Remove any margin-right if present */
+}
+
+.logo {
   width: 100px;
   height: 100px;
-  margin-right: 1rem;
+  margin-right: 15px; /* Keep some space between logo and title */
 }
 
-.main-header h1 {
-  color: #ffffff;
-  font-size: 2rem;
+.app-title {
+  color: #3a9fff;
   margin: 0;
-}
-
-.navigation ul {
-  list-style-type: none;
-  padding: 0;
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.navigation li {
-  margin-right: 1rem;
-  margin-bottom: 0.5rem;
-}
-
-.navigation a {
-  color: #ffffff;
-  text-decoration: none;
+  font-size: 31.68px; /* Increased by 10% from 28.8px */
   font-weight: bold;
 }
 
-.navigation a:hover {
-  text-decoration: underline;
+/* Navigation styles */
+.navigation {
+  display: flex;
+  align-items: center;
+  margin-left: auto; /* This will push the navigation to the right */
+  padding-right: 10px; /* Added 10px padding on the right side */
 }
 
-@media (min-width: 768px) {
-  .main-header {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-  }
+.nav-menu {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
 
+.nav-menu li {
+  margin-left: 32px; /* Increased from 27px to 32px (5px more spacing) */
+  position: relative;
+}
+
+.nav-link {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 21.12px; /* Increased by 10% from 19.2px */
+  transition: color 0.3s ease;
+  font-weight: bold;
+}
+
+.nav-link:hover {
+  color: #3a9fff;
+}
+
+/* Dropdown styles */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #2d2d2d;
+  min-width: 200px; /* Increased from 160px to accommodate longer text */
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.dropdown-menu li {
+  margin: 0;
+  padding: 0;
+}
+
+.dropdown-menu a {
+  color: #ffffff;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  font-size: 17.6px; /* Increased by 10% from 16px */
+  white-space: nowrap; /* Prevent word wrap */
+  overflow: hidden;
+  text-overflow: ellipsis; /* Add ellipsis for very long text */
+}
+
+.dropdown-menu a:hover {
+  background-color: #3a9fff;
+}
+
+.main-nav ul li {
+  margin-left: 32px; /* Increased from 27px to 32px (5px more spacing) */
+}
+
+.main-nav ul li a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 21.12px;
+  transition: color 0.3s ease;
+  font-weight: bold; /* Make navigation links bold */
+}
+
+@media (max-width: 768px) {
   .header-content {
-    margin-bottom: 0;
+    flex-direction: column;
+    align-items: flex-start;
   }
 
-  .navigation ul {
-    flex-wrap: nowrap;
+  .navigation {
+    margin-left: 0;
+    margin-top: 15px;
+    width: 100%;
+  }
+
+  .logo-title-container {
+    margin-bottom: 12px; /* Increased by 20% from 10px */
+  }
+
+  .nav-menu {
+    flex-direction: column;
+  }
+
+  .nav-menu li {
+    margin-left: 0;
+    margin-bottom: 12px; /* Increased by 20% from 10px */
+  }
+
+  .dropdown-menu {
+    position: static;
+    background-color: transparent;
+    box-shadow: none;
+    display: none;
+  }
+
+  .dropdown:hover .dropdown-menu {
+    display: block;
   }
 }

@@ -1,26 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import './Header.css';
+import StainedGlassLogo from '../assets/StainedGlassLogo.png';
+import Navigation from './Navigation';
 
 const Header: React.FC = () => {
   return (
-    <header>
-      <nav>
-        <ul>
-          <li><Link to="/">Dashboard</Link></li>
-          <li><Link to="/sports">Sports</Link></li>
-          <li>
-            <span>Finance</span>
-            <ul>
-              <li><Link to="/finance">Overview</Link></li>
-              <li><Link to="/finance/stocks">Stock Monitor</Link></li>
-              <li><Link to="/finance/account">Account Management</Link></li>
-            </ul>
-          </li>
-          <li><Link to="/weather-travel">Weather & Travel</Link></li>
-          <li><Link to="/news">News</Link></li>
-          <li><Link to="/login">Login</Link></li>
-        </ul>
-      </nav>
+    <header className="app-header">
+      <div className="header-content">
+        <div className="logo-title-container">
+          <img src={StainedGlassLogo} alt="AI-Explosion LifeBoard Logo" className="logo" />
+          <h1 className="app-title">AI-Explosion LifeBoard</h1>
+        </div>
+        <Navigation />
+      </div>
     </header>
   );
 };
